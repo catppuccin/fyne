@@ -8,8 +8,10 @@ import (
 	ctp "github.com/catppuccin/go"
 )
 
+// Just an alias to the original catppuccin/go type
 type Flavor ctp.Flavor
 
+// Just an alias to the original catppuccin/go vars
 var (
 	Latte     = ctp.Latte
 	Frappe    = ctp.Frappe
@@ -19,6 +21,7 @@ var (
 
 type Color string
 
+// Possible colors for accent color
 const (
 	Rosewater Color = "rosewater"
 	Flamingo  Color = "flamingo"
@@ -74,32 +77,38 @@ func colorWithAlpha(c ctp.Color, a uint8) color.Color {
 	return color.NRGBA{c.RGB[0], c.RGB[1], c.RGB[2], a}
 }
 
+// The main theme struct necessary for app.Settings().SetTheme(...)
 type Theme struct {
 	flavor Flavor
 	accent Color
 }
 
+// Creates new Theme with the accent color set to blue
 func New() Theme {
 	return Theme{accent: Blue}
 }
 
+// Creates new Theme with the chosen accent color
 func NewWithAccent(accent Color) Theme {
 	return Theme{accent: accent}
 }
 
+// Remove any forced flavor, returns to Latte for light mode systems and Mocha for dark mode
 func (ctp *Theme) ResetFlavor() {
 	ctp.flavor = nil
 }
 
+// Force a specific flavor of Catppuccin to the theme
 func (ctp *Theme) SetFlavor(f Flavor) {
 	ctp.flavor = f
 }
 
+// Chooses a different accent color to set as Primary
 func (ctp *Theme) SetAccent(c Color) {
 	ctp.accent = c
 }
 
-func (c *Theme) GetFlavor(variant fyne.ThemeVariant) (Flavor, fyne.ThemeVariant) {
+func (c *Theme) getFlavor(variant fyne.ThemeVariant) (Flavor, fyne.ThemeVariant) {
 	if c.flavor == nil {
 		if variant == theme.VariantLight {
 			return ctp.Latte, variant
@@ -117,8 +126,11 @@ func (c *Theme) GetFlavor(variant fyne.ThemeVariant) (Flavor, fyne.ThemeVariant)
 
 var _ fyne.Theme = (*Theme)(nil)
 
+// Implements fyne.Theme
+//
+// Gets color from current theme with current accent and returns it for the app to handle
 func (c Theme) Color(name fyne.ThemeColorName, variant fyne.ThemeVariant) color.Color {
-	f, v := c.GetFlavor(variant)
+	f, v := c.getFlavor(variant)
 	accent := f.Blue()
 	if c.accent != "" {
 		accent = getAccent(f, c.accent)
@@ -182,12 +194,17 @@ func (c Theme) Color(name fyne.ThemeColorName, variant fyne.ThemeVariant) color.
 	return theme.DefaultTheme().Color(name, variant)
 }
 
+// Implements fyne.Theme
 func (ctp Theme) Font(style fyne.TextStyle) fyne.Resource {
 	return theme.DefaultTheme().Font(style)
 }
+
+// Implements fyne.Theme
 func (ctp Theme) Icon(name fyne.ThemeIconName) fyne.Resource {
 	return theme.DefaultTheme().Icon(name)
 }
+
+// Implements fyne.Theme
 func (ctp Theme) Size(name fyne.ThemeSizeName) float32 {
 	return theme.DefaultTheme().Size(name)
 }

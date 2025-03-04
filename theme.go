@@ -79,6 +79,14 @@ type Theme struct {
 	accent Color
 }
 
+func New() Theme {
+	return Theme{accent: Blue}
+}
+
+func NewWithAccent(accent Color) Theme {
+	return Theme{accent: accent}
+}
+
 func (ctp *Theme) ResetFlavor() {
 	ctp.flavor = nil
 }

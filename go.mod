@@ -1,6 +1,6 @@
 module github.com/mbaklor/fyne-catppuccin
 
-go 1.24.0
+go 1.19
 
 require (
 	fyne.io/fyne/v2 v2.5.4

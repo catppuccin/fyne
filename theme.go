@@ -37,6 +37,8 @@ const (
 	Sapphire  Color = "sapphire"
 	Blue      Color = "blue"
 	Lavender  Color = "lavender"
+	Base      Color = "Base"
+	Text      Color = "Text"
 )
 
 func getAccent(f Flavor, c Color) ctp.Color {
@@ -84,8 +86,8 @@ type Theme struct {
 }
 
 // Creates new Theme with the accent color set to blue
-func New() Theme {
-	return Theme{accent: Blue}
+func New() *Theme {
+	return &Theme{accent: Blue}
 }
 
 // Creates new Theme with the chosen accent color
@@ -121,6 +123,19 @@ func (c *Theme) getFlavor(variant fyne.ThemeVariant) (Flavor, fyne.ThemeVariant)
 			v = theme.VariantLight
 		}
 		return c.flavor, v
+	}
+}
+
+// Get a color from the named colors in catppuccin, useful to color in canvas elements in a consistent way
+func (ctp Theme) GetNamedColor(c Color) color.Color {
+	f, _ := ctp.getFlavor(fyne.CurrentApp().Settings().ThemeVariant())
+	switch c {
+	case Text:
+		return f.Text()
+	case Base:
+		return f.Base()
+	default:
+		return getAccent(f, c)
 	}
 }
 

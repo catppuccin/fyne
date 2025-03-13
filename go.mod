@@ -1,4 +1,4 @@
-module github.com/mbaklor/fyne-catppuccin
+module github.com/catppuccin/fyne
 
 go 1.19
 

@@ -91,8 +91,8 @@ func New() *Theme {
 }
 
 // Creates new Theme with the chosen accent color
-func NewWithAccent(accent Color) Theme {
-	return Theme{accent: accent}
+func NewWithAccent(accent Color) *Theme {
+	return &Theme{accent: accent}
 }
 
 // Remove any forced flavor, returns to Latte for light mode systems and Mocha for dark mode

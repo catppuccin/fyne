@@ -37,8 +37,8 @@ const (
 	Sapphire  Color = "sapphire"
 	Blue      Color = "blue"
 	Lavender  Color = "lavender"
-	Base      Color = "Base"
-	Text      Color = "Text"
+	Base      Color = "base"
+	Text      Color = "text"
 )
 
 func getAccent(f Flavor, c Color) ctp.Color {

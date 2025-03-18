@@ -142,7 +142,7 @@ func main() {
 		}
 		a.Settings().SetTheme(ctp)
 	})
-	selectAccent.SetSelected("Mauve")
+	selectAccent.SetSelected("Blue")
 	themeForm.Append("Select Accent", selectAccent)
 
 	content := container.NewBorder(header, themeForm, nil, nil, buttons)

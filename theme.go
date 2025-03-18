@@ -87,7 +87,7 @@ type Theme struct {
 
 // Creates new Theme with the accent color set to blue
 func New() *Theme {
-	return &Theme{accent: Blue}
+	return NewWithAccent(Blue)
 }
 
 // Creates new Theme with the chosen accent color

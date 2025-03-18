@@ -36,8 +36,8 @@
 
 ## Usage
 
-1. Run `go get github.com/mbaklor/fyne-catppuccin`
-2. Add an import of `github.com/mbaklor/fyne-catppuccin` to your code
+1. Run `go get github.com/catppuccin/fyne`
+2. Add an import of `github.com/catppuccin/fyne` to your code
 3. Call the app's `Settings.().SetTheme()` method with an instantiated theme struct:
 
    ```go

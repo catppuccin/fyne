@@ -1,7 +1,6 @@
 package main
 
 import (
-	"example/widgets"
 	"image/color"
 
 	"fyne.io/fyne/v2"
@@ -10,7 +9,8 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
-	catppuccin "github.com/catppuccin/fyne"
+	"github.com/catppuccin/fyne"
+	"github.com/catppuccin/fyne/example/widgets"
 )
 
 type noPadding struct {

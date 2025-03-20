@@ -3,7 +3,7 @@ module github.com/catppuccin/fyne
 go 1.19
 
 require (
-	fyne.io/fyne/v2 v2.5.4
+	fyne.io/fyne/v2 v2.5.5
 	github.com/catppuccin/go v0.3.0
 	github.com/stretchr/testify v1.8.4
 )
